@@ -7,7 +7,9 @@ body{
     min-height: 200px;
     border: 1px dashed green;
 }
-
+input{
+	margin: 10px 0;
+}
 .placeholder {
     position: absolute;
     top: 20px;
@@ -30,10 +32,13 @@ body{
 	display: inline-block;
     overflow-x: hidden;
     margin: 10px 25px;
-    width: calc(100% - 50px);
+    width: calc(100% - 50px) !important;
 }
 .container-fluid{
 	width: 100%;
+}
+.width-90{
+	width: 90%;
 }
 .row{
 	float: left;

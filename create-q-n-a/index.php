@@ -11,16 +11,18 @@
 <div class="container container-fluid">
 	<div class="form col-xs-12 col-lg-6">
 		<div class="question-container">
-			<input class="" placehodler="Title here" />
+			<h1>Questions : </h1>
+			<input class="width-90" placeholder="Title of question" />
 			<input class="" placeholder="Category" />
 			<div class=" question-composer-container">
 				<div class="question-composer" id="question" contenteditable="true"></div>
 				<div class='placeholder'>paste HTML here <br><br>Go to some website and select things with your mouse and copy-paste it here</div>
 			</div>
-			<input class="" placeholder="tags" />
+			<input class="width-90" placeholder="tags" />
 			<input placeholder="Choose user ask"/>
 		</div>
 		<div class="answer-container">
+			<h1>Answer : </h1>
 			<div class="anwser-composer-container">
 				<div class="anwser-composer" id="answer" contenteditable="true"></div>
 				<div class='placeholder'>paste HTML here <br><br>Go to some website and select things with your mouse and copy-paste it here</div>
@@ -31,7 +33,7 @@
 	</div>
 	<div class="preview col-xs-12 col-lg-6">
 		<div class="container row">
-			<h1>Preview here</h1>
+			<h1>Preview here :</h1>
 			<div class="row" id="question-preview"></div>
 			<div class="row" id="answer-preview"></div>
 		</div>

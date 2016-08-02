@@ -1,4 +1,14 @@
-function onPaste(e,element){
+function onPasteQuestion(e){
+  var element = "#question-preview";
+  pasteData(e,element);  
+}
+
+function onPasteAnswer(e){
+  var element = "#answer-preview";
+  pasteData(e,element); 
+}
+
+function pasteData(e,element){
   var content;
   e.preventDefault();
   if( e.originalEvent.clipboardData ){
@@ -16,10 +26,11 @@ function onPaste(e,element){
 }
 
 
+
 /////// EVENT BINDING /////////
 
 // jQuery delegated event listener
-$(document).on('paste', '#question', onPaste(e,"#question-preview"));
-$(document).on('paste', '#answer', onPaste(e,"#answer-preview"));
+$(document).on('paste', '#question', onPasteQuestion);
+$(document).on('paste', '#answer', onPasteAnswer);
 // on-element event listener
 // document.body.addEventListener("paste", onPaste);
