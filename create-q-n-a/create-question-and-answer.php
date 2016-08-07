@@ -15,7 +15,7 @@ $title = $_POST['q-title'];
 $content = $_POST['q-body'];
 $format = 'html'; // plain text
 $categoryid = $_POST['q-category']; // assume no category
-$tags = explode(",",$_POST['q-tags']);
+$tags = remoteInvalidTags(explode(",",$_POST['q-tags']));
 $question_user_id = $_POST['q-user'];
 
 $q_id = qa_post_create("Q", $parentid, $title, $content, $format, $categoryid, $tags, $question_user_id);
@@ -32,5 +32,15 @@ if($q_id > 0){
 	}
 }
 
-
+/**
+A tag should have a length > 2 characters
+**/
+function remoteInvalidTags($tags){
+	foreach($tags as $index => $tag) {
+		if(strlen($tag) < 3){
+    		unset($tags[$index]);
+    	}
+	}
+	return $tags;
+}
 ?>

@@ -40,8 +40,14 @@
 	<div class="preview col-xs-12 col-lg-6">
 		<div class="container row">
 			<h1>Preview here :</h1>
-			<div class="row" id="question-preview"></div>
-			<div class="row" id="answer-preview"></div>
+			<h2>Question : </h2>
+			<div class="row" id="question-preview">
+				
+			</div>
+			<h2>Answer : </h2>
+			<div class="row" id="answer-preview">
+				
+			</div>
 		</div>
 	</div>
 </div>

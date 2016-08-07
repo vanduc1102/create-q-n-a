@@ -1,29 +1,3 @@
-function onPasteQuestion(e) {
-    var element = "#question-preview";
-    pasteData(e, element);
-}
-
-function onPasteAnswer(e) {
-    var element = "#answer-preview";
-    pasteData(e, element);
-}
-
-function pasteData(e, element) {
-    var content;
-    e.preventDefault();
-    if (e.originalEvent.clipboardData) {
-        content = (e.originalEvent || e).clipboardData.getData('text/html');
-        $(element).html(content);
-        document.execCommand('insertText', false, content);
-    } else if (window.clipboardData) {
-        content = window.clipboardData.getData('text/html');
-        if (window.getSelection) {
-            window.getSelection().getRangeAt(0).insertNode(document.createTextNode(content));
-            $(element).html(content);
-        }
-    }
-}
-
 function onSubmitData($event) {
     var data = getData();
     console.log("onSubmitData ", data);
@@ -68,7 +42,46 @@ function getData() {
 // jQuery delegated event listener
 $(document).on('paste', '#question', onPasteQuestion);
 $(document).on('paste', '#answer', onPasteAnswer);
-$(document).on('keyup', '#question', onPasteAnswer);
-$(document).on('keyup', '#answer', onPasteAnswer);
+//$(document).on('keyup', '#question', onKeyUpQuestion);
+//$(document).on('keyup', '#answer', onKeyUpAnswer);
 // on-element event listener
 // document.body.addEventListener("paste", onPaste);
+function onKeyUpQuestion(e){
+  e.preventDefault();
+  copyDataToReview("#question","#question-preview");
+}
+function onKeyUpAnswer(e){
+  e.preventDefault();
+  copyDataToReview("#answer", "#answer-preview");
+}
+
+function copyDataToReview($origin,$preview){
+  var originBody = $($origin).html();
+  $($preview).html(originBody);
+}
+function onPasteQuestion(e) {
+    var element = "#question-preview";
+    pasteData(e, element);
+}
+
+function onPasteAnswer(e) {
+    var element = "#answer-preview";
+    pasteData(e, element);
+}
+
+function pasteData(e, element) {
+    var content;
+    e.preventDefault();
+    if (e.originalEvent.clipboardData) {
+        content = (e.originalEvent || e).clipboardData.getData('text/html');
+        $(element).html(content);
+        document.execCommand('insertText', false, content);
+    } else if (window.clipboardData) {
+        content = window.clipboardData.getData('text/html');
+        if (window.getSelection) {
+            window.getSelection().getRangeAt(0).insertNode(document.createTextNode(content));
+            $(element).html(content);
+        }
+    }
+}
+
