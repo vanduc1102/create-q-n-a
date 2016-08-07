@@ -8,18 +8,23 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
+<?php
+	require_once 'create-element-from-db.php';
+?>
 <div class="container container-fluid">
 	<div class="form col-xs-12 col-lg-6">
 		<div class="question-container">
 			<h1>Questions : </h1>
-			<input class="width-90" placeholder="Title of question" />
-			<input class="" placeholder="Category" />
+			<input class="width-90" id="question-title" placeholder="Title of question" />
+			<!-- <input class="" placeholder="Category" /> -->
+			<?php createCagetorySelectorElement($dbConnection, "question-category"); ?>
 			<div class=" question-composer-container">
 				<div class="question-composer" id="question" contenteditable="true"></div>
 				<div class='placeholder'>paste HTML here <br><br>Go to some website and select things with your mouse and copy-paste it here</div>
 			</div>
-			<input class="width-90" placeholder="tags" />
-			<input placeholder="Choose user ask"/>
+			<input class="width-90" id="question-tags" placeholder="tags" />
+			<!-- <input placeholder="Choose user ask"/> -->
+			<?php createUserSelectorElement($dbConnection, "user-ask"); ?>
 		</div>
 		<div class="answer-container">
 			<h1>Answer : </h1>
@@ -27,9 +32,10 @@
 				<div class="anwser-composer" id="answer" contenteditable="true"></div>
 				<div class='placeholder'>paste HTML here <br><br>Go to some website and select things with your mouse and copy-paste it here</div>
 			</div>
-			<input placeholder="Choose user answer">
+			<!-- <input placeholder="Choose user answer"> -->
+			<?php createUserSelectorElement($dbConnection, "user-answer"); ?>
 		</div>
-		<button class="btn btn-primary" onclick="saveData($event)">Submit</button>
+		<button class="btn btn-primary" onclick="onSubmitData(event)">Submit</button>
 	</div>
 	<div class="preview col-xs-12 col-lg-6">
 		<div class="container row">
