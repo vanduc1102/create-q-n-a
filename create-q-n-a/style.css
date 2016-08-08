@@ -53,24 +53,8 @@ input, button, select{
 .question-composer-container{
 	margin-top: 10px;
 }
-@media (max-width:768px) {
-	.col-xs-12{
-		width: 100%;
-		display: inline-block;
-		float: left;
-	}
-
-}
-
-@media (min-width:768px) {
-	.col-lg-12{
-		width: 100%;
-		display: inline-block;
-		float: left;
-	}
-	.col-lg-6{
-		width: 50%;
-		display: inline-block;
-		float: left;
-	}
+.col-xs-12{
+	width: 100%;
+	display: inline-block;
+	float: left;
 }
