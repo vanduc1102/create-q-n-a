@@ -7,8 +7,8 @@
 
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
-		    echo "<select id=\"".$elementId."\">";
-		    echo "<option value=''>Please select</option>";
+		    echo "<select class=\"form-control\"  id=\"".$elementId."\">";
+		    echo "<option value=''>Select Category</option>";
 		    while($row = $result->fetch_assoc()) {
 		    	echo "<option value=".$row["categoryid"].">".$row["categoryid"]."-".$row["title"]."</option>";
 		    }
@@ -23,8 +23,8 @@
 		$sql = "SELECT userid, handle FROM `qa_users` WHERE emailcode = ''";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
-		    echo "<select id=\"".$elementId."\">";
-		    echo "<option value=''>Please select</option>";
+		    echo "<select class=\"form-control\"   id=\"".$elementId."\">";
+		    echo "<option value=''>Select User</option>";
 		    while($row = $result->fetch_assoc()) {
 		    	echo "<option value=".$row["userid"].">".$row["userid"]."-".$row["handle"]."</option>";
 		    }

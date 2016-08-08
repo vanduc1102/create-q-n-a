@@ -1,60 +1,13 @@
-body{
-	margin: 0;
-	padding: 0;
-	width: 100%;
+.input-group{
+	margin-top: 10px; 
 }
-[contenteditable] {
-    min-height: 200px;
-    border: 1px dashed green;
-}
-input{
-	margin: 10px 0;
-}
-.placeholder {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-[contenteditable]:empty + .placeholder {
-    opacity: .6;
-}
-
-[contenteditable]:empty:focus + .placeholder {
-    opacity: 0;
-}
-.question-composer-container , .anwser-composer-container{
-	position: relative;
-}
-.container{
-	display: inline-block;
-    overflow-x: hidden;
-    margin: 10px 25px;
-    width: calc(100% - 50px) !important;
-}
-.container-fluid{
-	width: 100%;
-}
-.width-90{
-	width: 90%;
-}
-.row{
-	float: left;
-	width: 100%;
-	display: inline-block;
-	margin: 10px 0;
-	padding: 0 10px;
-}
-input, button, select{
-	margin-top : 10px;
-}
-.question-composer-container{
+.btn-submit{
 	margin-top: 10px;
+	width: 150px;
 }
-.col-xs-12{
-	width: 100%;
-	display: inline-block;
-	float: left;
+.select-category{
+	margin-bottom: 10px;
+}
+.input-group.title , .input-group.tags{
+	width: 500px;
 }

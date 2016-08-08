@@ -34,6 +34,35 @@ function getData() {
         'a-body': answerBody,
     };
 }
+function checkValidate(){
+    var questionTitle = $("#question-title").val();
+    var questionCategory = $("#question-category").val();
+    var questionBody = CKEDITOR.instances.question.getData();
+    var questionUser = $("#user-ask").val();
+    var questionTags = $("#question-tags").val();
+    var answerUser = $("#user-answer").val();
+    var answerBody = CKEDITOR.instances.answer.getData();
+
+    if(questionTitle && questionTitle.length < 20){
+        alert("Please input question title with length > 20 characters");
+        return false;
+    }
+    if(questionCategory == ''){
+        alert("Please input question title with length > 20 characters");
+        return false;
+    }
+}
+
+function resetData(){
+    $("#question-title").val('');
+    $("#question-category").val('');
+    CKEDITOR.instances.question.setData('');
+    $("#user-ask").val('');
+    $("#question-tags").val('');
+
+    $("#user-answer").val('');
+    KEDITOR.instances.answer.setData('');
+}
 
 CKEDITOR.config.height = 150;
 CKEDITOR.config.width = 'auto';
