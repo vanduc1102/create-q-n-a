@@ -56,6 +56,12 @@
 		</div>
 		<button class="btn btn-primary btn-submit" onclick="onSubmitData(event)">Submit</button>
 	</div>
+	<div class="alert alert-success" id="alert-success" style="display:none" role="alert">
+	  <p>Well done! You successfully created question and anwser.</p>
+	</div>
+	<div class="alert alert-danger" id="alert-danger" style="display:none" role="alert">
+	   <p>Opsss! Error somewhere, please check.</p>
+	</div>
 </div>
 
 </body>

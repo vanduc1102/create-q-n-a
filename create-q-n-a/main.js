@@ -6,6 +6,7 @@ function onSubmitData($event) {
         })
         .done(function() {
             console.log("second success");
+            showSuccess();
         })
         .fail(function() {
             console.log("error");
@@ -71,3 +72,18 @@ $(function(){
     CKEDITOR.replace( 'question' );
     CKEDITOR.replace( 'answer' );
 });
+
+function showWarning(){
+    var element = $('alert-danger');
+    element.addClass("show-alert");
+    setTimeout(function(){
+        element.removeClass("show-alert");
+    },2000);
+}
+function showSuccess(){
+    var element = $('alert-success');
+    element.addClass("show-alert");
+    setTimeout(function(){
+        element.removeClass("show-alert");
+    },2000);
+}

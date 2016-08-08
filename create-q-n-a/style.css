@@ -11,3 +11,6 @@
 .input-group.title , .input-group.tags{
 	width: 500px;
 }
+.show-alert{
+	display: block !important; 
+}
