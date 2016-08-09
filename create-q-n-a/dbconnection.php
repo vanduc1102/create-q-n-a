@@ -1,6 +1,6 @@
 <?php
 
-	require_once 'config.php';
+	require_once '../../qa-config.php';
 
 	$dbConnection = mysqli_connect(QA_MYSQL_HOSTNAME, QA_MYSQL_USERNAME,QA_MYSQL_PASSWORD,QA_MYSQL_DATABASE ) or die(mysqli_error($dbc));
 	
