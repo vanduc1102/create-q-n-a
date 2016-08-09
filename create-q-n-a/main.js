@@ -1,18 +1,15 @@
 function onSubmitData($event) {
     if(checkValidate()){
         var data = getData();
-        $.post("create-question-and-answer.php",data, function() {
-            console.log("success");
-            showSuccess();
+        $.post("create-question-and-answer.php",data, function(response) {
+            console.log("success ",response);
+            showSuccess(response);
         })
         .done(function() {
             console.log("second success");
             resetFields();
         })
         .fail(function() {
-            showWarning();
-        })
-        .always(function() {
             showWarning();
         });
     }else{
@@ -100,14 +97,17 @@ $(function(){
 
 function showWarning(){
     var element = $('#toast-message');
-    element.html("Well done! You successfully created question and anwser.");
+    element.html("Opsss! Error somewhere, please check.");
     setTimeout(function(){
         element.html("");
     },2000);
 }
-function showSuccess(){
-   var element = $('#toast-message');
-    element.html("Opsss! Error somewhere, please check.");
+function showSuccess(text){
+    var element = $('#toast-message');
+    if(!text){
+        text = "Well done! You successfully created question and anwser.";
+    }
+    element.html(text);
     setTimeout(function(){
         element.html("");
     },2000);
@@ -118,7 +118,5 @@ function onChange(event){
     var inputGroupEle = ele.closest("div.input-group");
 	if(inputGroupEle.hasClass("has-error") || ele.val().trim() !== ''){
 		inputGroupEle.removeClass('has-error');
-	}else{
-		inputGroupEle.addClass('has-error');
 	}
 }

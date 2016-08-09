@@ -20,7 +20,11 @@
 
 	function createUserSelectorElement($conn, $elementId){
 		// Select all confirmed user
+
+		// $sql = "SELECT userid, handle FROM `qa_users` WHERE emailcode = '' and handle != 'admin' ";
+		
 		$sql = "SELECT userid, handle FROM `qa_users` WHERE emailcode = ''";
+		
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 		    echo "<select class=\"form-control\"   id=\"".$elementId."\">";

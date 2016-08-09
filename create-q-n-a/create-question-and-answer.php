@@ -25,17 +25,19 @@ if($question_user_id !== '' && $title !== '' && $categoryid !== ''){
 		if($answer_content !== '' && $a_user_id !== ''){
 			qa_post_create("A", $q_id, null,$answer_content , $format, null , null , $a_user_id);
 			http_response_code(201);
-			echo "Created Q&A";
+			echo "Created Question and Answer";
 		}else{
-			http_response_code(500);
-			echo "Internal Server Error";
+			http_response_code(201);
+			echo "Created a Question";
 		}
+	}else{
 		http_response_code(201);
-		echo "Created Q";
+		echo "No question created, something wrong....";
 	}
+}else{
+	http_response_code(200);
+	echo "Ok, Nothing was created";
 }
-http_response_code(200);
-echo "Ok, Nothing was created";
 
 /**
 A tag should have a length > 2 characters
