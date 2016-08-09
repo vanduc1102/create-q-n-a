@@ -1,19 +1,23 @@
 function onSubmitData($event) {
-    var data = getData();
-    console.log("onSubmitData ", data);
-    var jqxhr = $.post("create-question-and-answer.php",data, function() {
+    if(checkValidate()){
+        var data = getData();
+        $.post("create-question-and-answer.php",data, function() {
             console.log("success");
+            showSuccess();
         })
         .done(function() {
             console.log("second success");
-            showSuccess();
+            resetFields();
         })
         .fail(function() {
-            console.log("error");
+            showWarning();
         })
         .always(function() {
-            console.log("finished");
+            showWarning();
         });
+    }else{
+        showWarning();
+    }
 }
 
 function getData() {
@@ -36,22 +40,41 @@ function getData() {
     };
 }
 function checkValidate(){
-    var questionTitle = $("#question-title").val();
-    var questionCategory = $("#question-category").val();
     var questionBody = CKEDITOR.instances.question.getData();
-    var questionUser = $("#user-ask").val();
     var questionTags = $("#question-tags").val();
     var answerUser = $("#user-answer").val();
     var answerBody = CKEDITOR.instances.answer.getData();
 
-    if(questionTitle && questionTitle.length < 20){
-        alert("Please input question title with length > 20 characters");
+    if(checkEmpty("#question-title") 
+    && checkEmpty("#question-category")
+    && checkEmpty("#user-ask") 
+    && checkEmpty("#question-tags")){
+        return true;
+    }
+    return false;
+
+
+}
+function resetFields(){
+    $("#question-tags").val('');
+    $("#question-title").val('');
+    $("#question-category").val('');
+    CKEDITOR.instances.question.setData('');
+    CKEDITOR.instances.answer.setData('');
+}
+
+function checkEmpty(element){
+    var element = $(element);
+    if(element.val().trim() === ''){
+        addWarningClass(element);
         return false;
     }
-    if(questionCategory == ''){
-        alert("Please input question title with length > 20 characters");
-        return false;
-    }
+    return true;
+}
+
+function addWarningClass(element){
+    var inputGroupEle = element.closest("div.input-group");
+    inputGroupEle.addClass('has-error');
 }
 
 function resetData(){
@@ -71,19 +94,31 @@ CKEDITOR.config.width = 'auto';
 $(function(){
     CKEDITOR.replace( 'question' );
     CKEDITOR.replace( 'answer' );
+
+    $('#question-category, #user-ask, #user-answer').on('change', onChange);
 });
 
 function showWarning(){
-    var element = $('alert-danger');
-    element.addClass("show-alert");
+    var element = $('#toast-message');
+    element.html("Well done! You successfully created question and anwser.");
     setTimeout(function(){
-        element.removeClass("show-alert");
+        element.html("");
     },2000);
 }
 function showSuccess(){
-    var element = $('alert-success');
-    element.addClass("show-alert");
+   var element = $('#toast-message');
+    element.html("Opsss! Error somewhere, please check.");
     setTimeout(function(){
-        element.removeClass("show-alert");
+        element.html("");
     },2000);
+}
+
+function onChange(event){
+	var ele = $(event.target);
+    var inputGroupEle = ele.closest("div.input-group");
+	if(inputGroupEle.hasClass("has-error") || ele.val().trim() !== ''){
+		inputGroupEle.removeClass('has-error');
+	}else{
+		inputGroupEle.addClass('has-error');
+	}
 }

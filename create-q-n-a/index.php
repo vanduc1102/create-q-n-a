@@ -27,7 +27,7 @@
 		<div class="question-container">
 			<h1>Questions : </h1>
 			<div class="input-group title">
-				<input class="width-90 form-control" id="question-title" placeholder="Title of question" />
+				<input class="width-90 form-control" id="question-title" placeholder="Title of question" onchange="onChange(event)" />
 			</div>
 			<div class="input-group select-category">
 			<!-- <input class="" placeholder="Category" /> -->
@@ -37,7 +37,7 @@
 				<div class="question-composer" id="question" contenteditable="true"></div>
 			</div>
 			<div class="input-group tags">
-				<input class="width-90 form-control" id="question-tags" placeholder="tags" />
+				<input class="width-90 form-control" id="question-tags" placeholder="tags" onchange="onChange(event)" />
 			</div>
 			<div class="input-group">
 			<!-- <input placeholder="Choose user ask"/> -->
@@ -54,15 +54,8 @@
 				<?php createUserSelectorElement($dbConnection, "user-answer"); ?>
 			</div>
 		</div>
-		<button class="btn btn-primary btn-submit" onclick="onSubmitData(event)">Submit</button>
-	</div>
-	<div class="alert alert-success" id="alert-success" style="display:none" role="alert">
-	  <p>Well done! You successfully created question and anwser.</p>
-	</div>
-	<div class="alert alert-danger" id="alert-danger" style="display:none" role="alert">
-	   <p>Opsss! Error somewhere, please check.</p>
+		<button class="btn btn-primary btn-submit" onclick="onSubmitData(event)">Submit</button> <span id="toast-message"></span>
 	</div>
 </div>
-
 </body>
 </html>
