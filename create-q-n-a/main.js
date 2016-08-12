@@ -1,17 +1,20 @@
 function onSubmitData($event) {
     if(checkValidate()){
+		showSpinner();
         var data = getData();
         $.post("create-question-and-answer.php",data, function(response) {
-            console.log("success ",response);
+            //console.log("success ",response);
             showSuccess(response);
         })
         .done(function() {
-            console.log("second success");
+            //console.log("second success");
             resetFields();
         })
         .fail(function() {
             showWarning();
-        });
+        }).always(function(){
+			hideSpinner();
+		});
     }else{
         showWarning();
     }
@@ -119,4 +122,14 @@ function onChange(event){
 	if(inputGroupEle.hasClass("has-error") || ele.val().trim() !== ''){
 		inputGroupEle.removeClass('has-error');
 	}
+}
+function showSpinner(){
+	var spinnerEle = $("#spiner-container");
+	if(!spinnerEle.hasClass('spiner-div-display')){
+		spinnerEle.addClass("spiner-div-display");
+	}
+}
+function hideSpinner(){
+	var spinnerEle = $("#spiner-container");
+	spinnerEle.removeClass('spiner-div-display');
 }

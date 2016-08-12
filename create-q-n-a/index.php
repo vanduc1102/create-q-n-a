@@ -19,6 +19,9 @@
 
 </head>
 <body>
+<div class="spiner-div" id="spiner-container">
+    <img src="./spinner.gif"/>
+</div>
 <?php
 	require_once 'create-element-from-db.php';
 ?>
